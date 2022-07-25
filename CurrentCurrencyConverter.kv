@@ -1,0 +1,20 @@
+#:kivy 1.0
+<PopErr>:
+
+    Label:
+        text: "You have to select a currency\nand set values!"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "y":0.7}
+        font_size : 27
+        color : (1,0,0,1)
+
+
+    Button:
+        text: "Exit"
+        size_hint: 0.2, 0.2   
+        pos_hint: {"x":0.4, "y":0.2} 
+        on_release : self.popup_exit.dismiss()
+
+
+<CurrentCurrencyConverter>:
+
