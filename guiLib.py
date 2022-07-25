@@ -1,4 +1,7 @@
+from msilib.schema import AppSearch
 from typing import Text
+import kivy
+kivy.require('1.0.7')
 from kivy.uix.dropdown import DropDown
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -6,8 +9,16 @@ from kivy.uix.label import Label
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+from kivy.uix.popup import Popup
+from kivy.uix.floatlayout import FloatLayout
+from matplotlib.pyplot import title
 from numpy import source
 import converter 
+
+
+class PErr(FloatLayout):
+     pass
+
 
 class CurrentCurrencyConverter(App):
   
@@ -96,13 +107,16 @@ class CurrentCurrencyConverter(App):
 
         return self.main
 
-    def callback(self, instance):
-        # change label text to "Hello + user name!"
-        self.greeting.text = "Hello " + self.user.text + "!"
 
     def press(self, instance):
-        #print(self.curr[self.mainbutton1.text])
-        self.output.text = str(float((float(self.input.text) * float(self.curr[self.mainbutton2.text])) / float(self.curr[self.mainbutton1.text])))  
+        if self.mainbutton1.text == "from" or self.mainbutton2.text == "to":
+            show = PErr()
+            self.popup = Popup(title = "Error!", content = show, size_hint=(None, None), size = (300,300))
+            self.popup.open()
+
+        else:
+            #print(self.curr[self.mainbutton1.text])
+            self.output.text = str(float((float(self.input.text) * float(self.curr[self.mainbutton2.text])) / float(self.curr[self.mainbutton1.text])))  
 
 
 if __name__ == "__main__":
