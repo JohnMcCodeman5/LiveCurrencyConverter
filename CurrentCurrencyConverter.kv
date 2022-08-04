@@ -1,5 +1,8 @@
 #:kivy 1.0
-<PopErr>:
+#:import Factory kivy.factory.Factory
+
+<PopupError@Popup>:
+    auto_dismiss: False
 
     Label:
         text: "You have to select a currency\nand set values!"
@@ -10,11 +13,30 @@
 
 
     Button:
-        text: "Exit"
+        text: "Ok"
         size_hint: 0.2, 0.2   
         pos_hint: {"x":0.4, "y":0.2} 
-        on_release : self.popup_exit.dismiss()
+        on_release : root.dismiss()
+
+<PopErr>:
+    Label:
+        text: "You have to select a currency\nand set values!\nClick outside of window to dismiss."
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "y":0.7}
+        font_size : 20
+        color : (1,0,0,1)
+
+
+    Button:
+        text: "Exit App"
+        size_hint: 0.2, 0.2   
+        pos_hint: {"x":0.4, "y":0.2} 
+        on_release : exit()
 
 
 <CurrentCurrencyConverter>:
-
+    #Button:
+    #    text: "Convert"
+    #    size_hint : 0.2,0.2
+    #    font_size : "23sp"
+    #    on_press : Factory.PopupError.open()

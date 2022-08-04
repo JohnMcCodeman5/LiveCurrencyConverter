@@ -115,7 +115,6 @@ class CurrentCurrencyConverter(App):
         if self.mainbutton1.text == "from" or self.mainbutton2.text == "to" or self.input.text == "":
             show1 = PopErr()
             self.popup = Popup(title = "Error!", content = show1, size_hint=(None, None), size = (400,400))
-            #self.popup = Popup(title = "Error!", size_hint=(None, None), size = (300,300))
             self.popup.open()   
 
         else:
